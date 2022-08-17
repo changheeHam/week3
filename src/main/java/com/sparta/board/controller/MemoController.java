@@ -28,6 +28,11 @@ public class MemoController {
     public List<Memo> getMemos() {
         return memoRepository.findAllByOrderByModifiedAtDesc();
     }
+    
+    @GetMapping("/api/memos/{id}")
+    public Optional<Memo> getPerDoc(@PathVariable Long id){
+       return memoRepository.findById(id);
+    }
 
     @DeleteMapping("/api/memos/{id}")
     public Long deleteMemo(@PathVariable Long id,@RequestBody MemoRequestDto requestDto) {
